@@ -12,7 +12,6 @@ class UserViewSet(viewsets.ModelViewSet):
     filter_fields = ('name',
         'username',
         'user_id',
-        'authentication_token'
         'picture')
     
 class FriendsViewSet(viewsets.ModelViewSet):
