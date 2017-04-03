@@ -25,4 +25,4 @@ class FriendshipViewSet(viewsets.ModelViewSet):
     queryset = Friendship.objects.all()
     serializer_class = FriendshipSerializer
     filter_backends = (DjangoFilterBackend,)
-    filter_fields = ('person', 'friends', 'date_joined', 'status')
+    filter_fields = ('person', 'friends', 'status')
