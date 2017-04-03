@@ -13,3 +13,6 @@ class Photo(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	event_id = models.IntegerField()
 	datafile = models.TextField(validators=[URLValidator()])
+
+	def __str__(self):
+		return self.event_id
