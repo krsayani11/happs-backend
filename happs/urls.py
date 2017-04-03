@@ -26,17 +26,15 @@ router = routers.DefaultRouter()
 router.register(r'api/users', uviews.UserViewSet)
 router.register(r'api/events', eviews.EventViewSet)
 router.register(r'api/photos', pviews.PhotoViewSet)
-router.register(r'api/friendship', uviews.FriendshipViewSet)
+router.register(r'api/friendships', uviews.FriendshipViewSet)
 admin.autodiscover()
 
 urlpatterns = [
-	url(r'^', include(router.urls)),
+    url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/events/', include("events.urls", namespace='events-api')),
     url(r'^api/photos/', include("photos.urls", namespace='photos-api'),
-    url(r'^api/', include("users.urls", namespace='users-api'),
-    ),
-]
+    url(r'^api/', include("users.urls", namespace='users-api')),]
 
 urlpatterns += staticfiles_urlpatterns()
