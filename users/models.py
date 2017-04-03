@@ -3,19 +3,20 @@ from django.db import models
 from django.core.validators import URLValidator
 
 class User(models.Model):
-	name = models.CharField(max_length=255)
-	username = models.CharField(max_length=255, primary_key=True)
-	user_id = models.BigIntegerField()
-	authentication_token = models.CharField(max_length=255)
-	picture = models.TextField(validators=[URLValidator()])
+    name = models.CharField(max_length=255)
+    username = models.CharField(max_length=255, primary_key=True)
+    user_id = models.BigIntegerField()
+    authentication_token = models.CharField(max_length=255)
+    picture = models.TextField(validators=[URLValidator()])
 
-	def __str__(self):
-		return self.username
+    def __str__(self):
+        return self.username
 
 class Friends(models.Model):
-	created = models.DateTimeField(auto_now_add=True, editable=False)
-	creator = models.ForeignKey(User, related_name="friendship_creator_set")
+    members = models.ManyToManyField(User, through='Friendship')
 
-	# need to FIX this relationship (it's one-sided)
-	# maybe I can add a query to filter all of a user's friends
-	friend = models.ForeignKey(User, related_name="friend_set") 
+class Friendship(models.Model):
+    person = models.ForeignKey(User, on_delete=models.CASCADE)
+    friends = models.ForeignKey(Friends, on_delete=models.CASCADE)
+    data_joined = models.DateTimeField(auto_now_add=True, editable=False)
+    status = models.CharField(max_length=64)

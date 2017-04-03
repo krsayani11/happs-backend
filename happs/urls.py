@@ -27,6 +27,7 @@ router.register(r'api/users', uviews.UserViewSet)
 router.register(r'api/friends', uviews.FriendsViewSet)
 router.register(r'api/events', eviews.EventViewSet)
 router.register(r'api/photos', pviews.PhotoViewSet)
+router.register(r'api/friendship', uviews.FriendshipViewSet)
 admin.autodiscover()
 
 urlpatterns = [
