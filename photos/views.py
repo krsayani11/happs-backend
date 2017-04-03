@@ -6,10 +6,10 @@ from .models import Photo
 from django_filters.rest_framework import DjangoFilterBackend
 
 class PhotoViewSet(viewsets.ModelViewSet):
-	queryset = Photo.objects.all()
-	serializer_class = PhotoSerializer
-	filter_backends = (DjangoFilterBackend,)
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = ('username',
-    	'created',
-    	'event_id',
-    	'datafile')
+        'created',
+        'event_id',
+        'datafile')
