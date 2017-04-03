@@ -24,7 +24,9 @@ class EventViewSet(viewsets.ModelViewSet):
             'end_time', 
             'host', 
             'description',
-            'private',)
+            'private',
+            'event_id',
+            'place_name',)
 
     @detail_route(methods=['post'])
     def addEvent(self, request):

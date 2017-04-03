@@ -11,8 +11,11 @@ class Photo(models.Model):
          on_delete=models.CASCADE,
          default = None,)
 	created = models.DateTimeField(auto_now_add=True)
-	event_id = models.IntegerField()
+	event_id = event_id = models.ForeignKey(
+         'events.event',
+         on_delete=models.CASCADE,
+         default = None,)
 	datafile = models.TextField(validators=[URLValidator()])
 
 	def __str__(self):
-		return self.event_id
+		return self.event_i
