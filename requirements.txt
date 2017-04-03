@@ -1,0 +1,15 @@
+appdirs==1.4.3
+curl==2017.0.1
+dj-database-url==0.4.2
+Django==1.10.6
+django-filter==1.0.2
+djangorestframework==3.6.2
+gunicorn==19.7.1
+Markdown==2.6.8
+OpenPGP==0.2.3
+packaging==16.8
+psycopg2==2.7.1
+pyparsing==2.2.0
+requests==2.13.0
+six==1.10.0
+whitenoise==3.3.0
