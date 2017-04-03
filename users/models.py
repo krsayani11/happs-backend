@@ -6,7 +6,7 @@ class User(models.Model):
 	username = models.CharField(max_length=255, primary_key=True)
 	user_id = models.BigIntegerField()
 	authentication_token = models.CharField(max_length=255)
-	# Profile picture
+	picture = models.TextField(validators=[URLValidator()])
 
 	def __str__(self):
 		return self.name
