@@ -10,7 +10,7 @@ class User(models.Model):
 	picture = models.TextField(validators=[URLValidator()])
 
 	def __str__(self):
-		return self.name
+		return self.username
 
 class Friends(models.Model):
 	created = models.DateTimeField(auto_now_add=True, editable=False)
