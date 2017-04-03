@@ -12,11 +12,9 @@ class User(models.Model):
     def __str__(self):
         return self.username
 
-class Friends(models.Model):
-    members = models.ManyToManyField(User, through='Friendship')
-    status = models.CharField(max_length=64)
+
 
 class Friendship(models.Model):
-    person = models.ForeignKey(User, on_delete=models.CASCADE)
-    friends = models.ForeignKey(Friends, on_delete=models.CASCADE)
-    status = models.CharField(max_length=64)
+    person = models.ForeignKey(User, on_delete=models.CASCADE,  related_name="friendship_creator_set")
+    friend = models.ForeignKey(User, on_delete=models.CASCADE,  related_name="friend_set")
+    status = models.CharField(max_length=64,)
