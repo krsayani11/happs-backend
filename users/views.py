@@ -18,8 +18,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class FriendsViewSet(viewsets.ModelViewSet):
     queryset = Friends.objects.all()
     serializer_class = FriendsSerializer
-    filter_backends = (DjangoFilterBackend,)
-    filter_fields = ('members')
 
 class FriendshipViewSet(viewsets.ModelViewSet):
     queryset = Friendship.objects.all()
