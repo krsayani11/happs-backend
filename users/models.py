@@ -18,5 +18,4 @@ class Friends(models.Model):
 class Friendship(models.Model):
     person = models.ForeignKey(User, on_delete=models.CASCADE)
     friends = models.ForeignKey(Friends, on_delete=models.CASCADE)
-    data_joined = models.DateTimeField(auto_now_add=True, editable=False)
     status = models.CharField(max_length=64)
