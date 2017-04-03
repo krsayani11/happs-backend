@@ -14,6 +14,7 @@ class User(models.Model):
 
 class Friends(models.Model):
     members = models.ManyToManyField(User, through='Friendship')
+    status = models.CharField(max_length=64)
 
 class Friendship(models.Model):
     person = models.ForeignKey(User, on_delete=models.CASCADE)
