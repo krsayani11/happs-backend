@@ -15,6 +15,15 @@ class Event(models.Model):
 	longitude = models.CharField(max_length=255)
 	latitude = models.CharField(max_length=255)
 	picture = models.TextField(validators=[URLValidator()])
+	private = models.BooleanField()
 
 	def __str__(self):
 		return self.event_name
+
+
+class Attendees(models.Model):
+    event_id = models.ForeignKey(Event, on_delete=models.CASCADE,  default=None)
+    attendees = models.ManyToManyField('users.User')
+
+    def __str__(self):
+        return self.event_id

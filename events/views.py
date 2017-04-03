@@ -2,14 +2,14 @@ from rest_framework import viewsets, status, permissions
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, detail_route, list_route
 from rest_framework.response import Response
-from .models import Event
+from .models import Event, Attendees
 from rest_framework.generics import (
         DestroyAPIView,
         ListAPIView,
         UpdateAPIView,
         RetrieveAPIView)
 from django.http import HttpResponse
-from .serializers import EventSerializer
+from .serializers import EventSerializer, AttendeesSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
@@ -23,7 +23,8 @@ class EventViewSet(viewsets.ModelViewSet):
             'start_time', 
             'end_time', 
             'host', 
-            'description',)
+            'description',
+            'private',)
 
     @detail_route(methods=['post'])
     def addEvent(self, request):
@@ -78,4 +79,19 @@ class EventListAPIView(ListAPIView):
             'end_time', 
             'host', 
             'description',
-            'picture',)
+            'picture',
+            'private')
+
+class AttendeesViewSet(viewsets.ModelViewSet):
+    queryset = Attendees.objects.all()
+    serializer_class = AttendeesSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('event_id', 'attendees')
+
+class AttendeesUpdateAPIView(UpdateAPIView):
+    queryset = Attendees.objects.all()
+    serializer_class = AttendeesSerializer
+
+class AttendeesDestroyAPIView(DestroyAPIView):
+    queryset = Attendees.objects.all()
+    serializer_class = AttendeesSerializer
