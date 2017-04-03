@@ -14,4 +14,4 @@ class FriendsSerializer(serializers.ModelSerializer):
 class FriendshipSerializer(serializers.ModelSerializer):
     class Meta:
         model = Friendship
-        fields = ('person', 'friends', 'status')
+        fields = '__all__'
