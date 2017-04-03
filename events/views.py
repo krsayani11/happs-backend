@@ -82,7 +82,8 @@ class EventListAPIView(ListAPIView):
             'host', 
             'description',
             'picture',
-            'private')
+            'private'
+            'place_name',)
 
 class AttendeesViewSet(viewsets.ModelViewSet):
     queryset = Attendees.objects.all()
