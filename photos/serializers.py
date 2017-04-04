@@ -5,4 +5,4 @@ from rest_framework.serializers import ModelSerializer
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Photo
-        fields = ('username', 'created', 'event_id', 'datafile')
+        fields = ('username', 'created', 'event_id', 'datafile', 'photo_id')
