@@ -37,6 +37,13 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/events/', include("events.urls", namespace='events-api')),
     url(r'^api/photos/', include("photos.urls", namespace='photos-api')),
-    url(r'^api/', include("users.urls", namespace='users-api')),]
+    url(r'^api/', include("users.urls", namespace='users-api')),
+    url(r'^api/attendees/(?P<pk>\d+)/edit/$', eviews.AttendeesUpdateAPIView.as_view()),
+    url(r'^api/attendees/(?P<pk>\d+)/destroy/$', eviews.AttendeesDestroyAPIView.as_view()),
+    url(r'^api/invitation/(?P<pk>\d+)/edit/$', eviews.InvitationUpdateAPIView.as_view()),
+    url(r'^api/invitation/(?P<pk>\d+)/destroy/$', eviews.InvitationDestroyAPIView.as_view()),
+    url(r'^friendships/(?P<pk>\d+)/edit/$', uviews.FriendshipUpdateAPIView.as_view()),
+    url(r'^friendships/(?P<pk>\d+)/destroy/$', uviews.FriendshipDestroyAPIView.as_view()),
+    url(r'^friendships/(?P<pk>\d+)/detail/$', uviews.FriendshipDetailAPIView.as_view()),]
 
 urlpatterns += staticfiles_urlpatterns()
