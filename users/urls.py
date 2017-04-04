@@ -12,9 +12,7 @@ from .views import (
 
 app_name = 'users'
 urlpatterns = [
-	url(r'^users/(?P<pk>\d+)/edit/$', UserUpdateAPIView.as_view()),
-	url(r'^users/(?P<pk>\d+)/destroy/$', UserDestroyAPIView.as_view()),
-	url(r'^users/(?P<pk>\d+)/detail/$', UserDetailAPIView.as_view()),
+
 	
 
 
