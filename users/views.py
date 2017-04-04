@@ -16,7 +16,7 @@ class UserViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('name',
         'username',
-        'user_key',
+        'user_id',
         'picture')
     
 class UserDetailAPIView(RetrieveAPIView):
