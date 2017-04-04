@@ -4,7 +4,7 @@ from django.core.validators import URLValidator
 
 class User(models.Model):
     name = models.CharField(max_length=255)
-    username = models.CharField(max_length=255, primary_key=True)
+    username = models.CharField(max_length=255)
     user_key = models.BigIntegerField()
     authentication_token = models.CharField(max_length=255)
     picture = models.TextField(validators=[URLValidator()])
