@@ -7,7 +7,10 @@ from .views import (
 	EventUpdateAPIView,
 	EventDestroyAPIView,
 	AttendeesUpdateAPIView,
-	AttendeesDestroyAPIView,)
+	AttendeesDestroyAPIView,
+	InvitationUpdateAPIView,
+	InvitationDestroyAPIView,
+	)
 
 app_name = 'events'
 urlpatterns = [
@@ -17,5 +20,7 @@ urlpatterns = [
 	url(r'^(?P<pk>\d+)/detail/$', EventDetailAPIView.as_view()),
 	url(r'^attendees/(?P<pk>\d+)/edit/$', AttendeesUpdateAPIView.as_view()),
 	url(r'^attendees/(?P<pk>\d+)/destroy/$', AttendeesDestroyAPIView.as_view()),
+	url(r'^invitation/(?P<pk>\d+)/edit/$', InvitationUpdateAPIView.as_view()),
+	url(r'^invitation/(?P<pk>\d+)/destroy/$', InvitationDestroyAPIView.as_view()),
 	
 ]

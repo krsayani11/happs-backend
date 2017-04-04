@@ -2,14 +2,14 @@ from rest_framework import viewsets, status, permissions
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, detail_route, list_route
 from rest_framework.response import Response
-from .models import Event, Attendees
+from .models import Event, Attendees, Invitation
 from rest_framework.generics import (
         DestroyAPIView,
         ListAPIView,
         UpdateAPIView,
         RetrieveAPIView)
 from django.http import HttpResponse
-from .serializers import EventSerializer, AttendeesSerializer
+from .serializers import EventSerializer, AttendeesSerializer, InvitationSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
@@ -26,7 +26,8 @@ class EventViewSet(viewsets.ModelViewSet):
             'description',
             'private',
             'event_id',
-            'place_name',)
+            'place_name',
+            'invites_enabled',)
 
     @detail_route(methods=['post'])
     def addEvent(self, request):
@@ -83,7 +84,8 @@ class EventListAPIView(ListAPIView):
             'description',
             'picture',
             'private'
-            'place_name',)
+            'place_name',
+            'invites_enabled',)
 
 class AttendeesViewSet(viewsets.ModelViewSet):
     queryset = Attendees.objects.all()
@@ -98,3 +100,17 @@ class AttendeesUpdateAPIView(UpdateAPIView):
 class AttendeesDestroyAPIView(DestroyAPIView):
     queryset = Attendees.objects.all()
     serializer_class = AttendeesSerializer
+
+class InvitationViewSet(viewsets.ModelViewSet):
+    queryset = Invitation.objects.all()
+    serializer_class = InvitationSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('event_id', 'username', 'status')
+
+class InvitationUpdateAPIView(UpdateAPIView):
+    queryset = Invitation.objects.all()
+    serializer_class = InvitationSerializer
+
+class InvitationDestroyAPIView(DestroyAPIView):
+    queryset = Invitation.objects.all()
+    serializer_class = InvitationSerializer
