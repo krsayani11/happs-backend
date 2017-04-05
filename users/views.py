@@ -17,7 +17,8 @@ class UserViewSet(viewsets.ModelViewSet):
     filter_fields = ('name',
         'username',
         'user_id',
-        'picture')
+        'picture'
+        'authentication_token')
     
 class UserDetailAPIView(RetrieveAPIView):
     queryset = User.objects.all()
